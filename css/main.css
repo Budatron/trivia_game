@@ -3,4 +3,4 @@ html, body {
 }
 
 .main-container { width: 100%; position: relative; }
-.main-footer { width: 100%; position: relative; height: 150px; bottom: 0px; }
+.main-footer { width: 100%; position: absolute; height: 150px; bottom: 100px; }

@@ -47,14 +47,17 @@ $(function(){
             {step: 'qton', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
             {step: 'score', panel: $('#panel-score'), title: "RESULTADOS", sub: ""}, 
             {step: 'total', panel: $('#panel-score'), title: "RESULTADOS FINALES", sub: ""}
-        ]
+        ],
+        stepCicle: 0,
+        temp: 20000,
+        pause: 5000
     };
 
 /* ======= Octopus ======= */
 
     var octopus = {
         init: function() {
-            // setCurrentStep('intro-1');
+            octopus.setCurrentStep('intro-1');
             
             mainView.init();
             introView.init();
@@ -62,11 +65,11 @@ $(function(){
             aqView.init();
             scoreView.init();
 
-            stepSelector();
+            octopus.stepSelector();
         },
 
         stepSelector: function(){
-            switch(model.currentStep){
+            switch(model.currentStep.step){
                 case 'intro-1':
                     octopus.introStep();
                 break;
@@ -129,7 +132,11 @@ $(function(){
         },
 
         setCurrentStep: function(step) {
-            model.currentStep = step;
+            for(var i in model.steps) {
+                if(model.steps[i] == step) {
+                    model.currentStep = model.steps[i];
+                }
+            }
         },
 
     };
@@ -159,8 +166,8 @@ $(function(){
         },
 
         render: function(){
-            var currentPanel = octopus.getCurrentPanel();
-            // this.main_container
+            var stepPanel = octopus.getCurrentStep();
+            this.title 
         }
     };
 
@@ -169,7 +176,7 @@ $(function(){
             this.title = $('#panel-select .title');
             this.sub = $('#panel-select .subtitle');
             this.cEquipos = $('#panel-select #crea-equipos');
-            this.ayuda = $('#panel-select #ayuda');
+            this.numPreg = $('#panel-select #num-preg');
             // selectView.render();
         },
 
