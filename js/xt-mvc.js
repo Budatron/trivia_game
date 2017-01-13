@@ -10,18 +10,29 @@ $(function(){
             { points: 0, answ: "", name: "" }, { points: 0, answ: "", name: "" } 
         ],
         preguntas: [
-            '¿Quién descubrio América?', 
-            '¿Dénde esta el polo Norte?', 
-            '¿En qué año se dan las petunias?', 
-            '¿Por qué solo en México pica el chile?',
-            '¿Por qué solo en México pica el chile?',
-            '¿La Chiripiolca es contagiosa?',
-            '¿Por qué solo en México pica el chile?',
-            '¿Se puede morir uno de mal olor?',
-            '¿Por qué solo en México pica el chile?',
-            '¿Se puede doblar una barra de chocolate con la mente?',
-            '¿Los faros tienen baños?',
-            '¿Quién le pone el cascabel al gato?'
+            {q: '¿Quién descubrio América?', a: 1},
+            {q: '¿Dénde esta el polo Norte?', a: 1},
+            {q: '¿En qué año se dan las petunias?',  a: 1},
+            {q: '¿La Chiripiolca es contagiosa?', a: 1},
+            {q: '¿Por qué solo en México pica el chile?', a: 1},
+            {q: '¿Se puede morir uno de mal olor?', a: 1},
+            {q: '¿Se puede doblar una barra de chocolate con la mente?', a: 1},
+            {q: '¿Los faros tienen baños?', a: 1},
+            {q: '¿Quién le pone el cascabel al gato?', a: 1},
+            {q: '¿Quién le pone el cascabel al gato?', a: 1}
+        ],
+
+        respuestas: [
+            ['Nadie', 'Mickey', 'Pluto', 'Cricri'],
+            ['Noreste', 'Mickey', 'Pluto', 'Cricri'],
+            ['1965', 'Mickey', 'Pluto', 'Cricri'],
+            ['En verano', 'Mickey', 'Pluto', 'Cricri'],
+            ['Por que si', 'Mickey', 'Pluto', 'Cricri'],
+            ['Si', 'Mickey', 'Pluto', 'Cricri'],
+            ['Siempre', 'Mickey', 'Pluto', 'Cricri'],
+            ['No', 'Mickey', 'Pluto', 'Cricri'],
+            ['Otro gato', 'Mickey', 'Pluto', 'Cricri'],
+            ['Otro gato', 'Mickey', 'Pluto', 'Cricri']
         ],
         titles: [
             {title: "INTRO", sub: ""}, {title: "JUEGO NUEVO", sub: "SELECCION"},
@@ -29,21 +40,32 @@ $(function(){
             {title: "PREGUNTA", sub: ""}, {title: "RESULTADOS", sub: ""},
             {title: "RESULTADOS FINALES", sub: ""}
         ],
-        respuestas: [],
         turno: 0,
         numQ: 0,
-        steps: ['intro-1', 'intro-2', 'seleccion', 'ask', 'qton', 'score', 'total']
+        steps: [
+            {step:'intro-1', panel: $('#panel-intro'), title: "INTRO", sub: ""}, 
+            {step: 'intro-2', panel: $('#panel-intro'), title: "JUEGO NUEVO", sub: "SELECCION"}, 
+            {step:'seleccion', panel: $('#panel-select'), title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos"}, 
+            {step:'ask', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
+            {step: 'qton', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
+            {step:'score', panel: $('#panel-score'), title: "RESULTADOS", sub: ""}, 
+            {step:'total', panel: $('#panel-score'), title: "RESULTADOS FINALES", sub: ""}
+        ]
     };
 
 /* ======= Octopus ======= */
 
     var octopus = {
         init: function() {
-            // setCurrentStep('intro-1');
-            stepSelector();
-            model.currentPanel = view.panel_1;
+            setCurrentStep('intro-1');
+            
+            mainView.init();
+            introView.init();
+            selectView.init();
+            aqView.init();
+            scoreView.init();
 
-            view.init();
+            stepSelector();
         },
 
         stepSelector: function(){
@@ -73,7 +95,8 @@ $(function(){
         },
 
         introStep: function(){
-
+            introView.render();
+            mainView.render();
         },
 
         intro2Setep: function(){
@@ -119,28 +142,22 @@ $(function(){
         init: function() {
             this.main_container = $('#main-container');
             this.main_footer = $('#main-footer');
-            this.panel_1 = $('#panel-1');
-            this.panel_2 = $('#panel-2');
-            this.panel_3 = $('#panel-3');
-            this.panel_4 = $('#panel-4');
-            view.render();
+            
+            mainView.render();
         },
 
         render: function(){
             var currentPanel = octopus.getCurrentPanel();
-            // this.main_container
+            this.main_container.append(currentPanel);
         }
     };
 
     var introView = {
         init: function() {
-            this.main_container = $('#main-container');
-            this.main_footer = $('#main-footer');
-            this.panel_1 = $('#panel-1');
-            this.panel_2 = $('#panel-2');
-            this.panel_3 = $('#panel-3');
-            this.panel_4 = $('#panel-4');
-            view.render();
+            this.title = $('#panel-intro .title');
+            this.sub = $('#panel-intro .subtitle');
+            this.animation = $('#panel-intro #animation');
+            // introView.render();
         },
 
         render: function(){
@@ -151,13 +168,11 @@ $(function(){
 
     var selectView = {
         init: function() {
-            this.main_container = $('#main-container');
-            this.main_footer = $('#main-footer');
-            this.panel_1 = $('#panel-1');
-            this.panel_2 = $('#panel-2');
-            this.panel_3 = $('#panel-3');
-            this.panel_4 = $('#panel-4');
-            view.render();
+            this.title = $('#panel-select .title');
+            this.sub = $('#panel-select .subtitle');
+            this.cEquipos = $('#panel-select #crea-equipos');
+            this.ayuda = $('#panel-select #ayuda');
+            // selectView.render();
         },
 
         render: function(){
@@ -166,15 +181,14 @@ $(function(){
         }
     };
 
-    var qrView = {
+    var aqView = {
         init: function() {
-            this.main_container = $('#main-container');
-            this.main_footer = $('#main-footer');
-            this.panel_1 = $('#panel-1');
-            this.panel_2 = $('#panel-2');
-            this.panel_3 = $('#panel-3');
-            this.panel_4 = $('#panel-4');
-            view.render();
+            this.title = $('#panel-aq .title');
+            this.sub = $('#panel-aq .subtitle');
+            this.timer = $('#panel-aq #timer');
+            this.answers = $('#panel-aq #answers');
+            this.equip = $('#panel-aq #equipos');
+            // aqView.render();
         },
 
         render: function(){
@@ -183,15 +197,12 @@ $(function(){
         }
     };
 
-    var totalView = {
+    var scoreView = {
         init: function() {
-            this.main_container = $('#main-container');
-            this.main_footer = $('#main-footer');
-            this.panel_1 = $('#panel-1');
-            this.panel_2 = $('#panel-2');
-            this.panel_3 = $('#panel-3');
-            this.panel_4 = $('#panel-4');
-            view.render();
+            this.title = $('#panel-score .title');
+            this.sub = $('#panel-score .subtitle');
+            this.score = $('#panel-score #score');
+            // scoreView.render();
         },
 
         render: function(){
