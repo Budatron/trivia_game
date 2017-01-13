@@ -50,34 +50,38 @@ $(function(){
         ],
         stepCicle: 0,
         temp: 20000,
-        pause: 5000
+        pause: 5000,
+        nextStep: 'intro-1'
     };
 
 /* ======= Octopus ======= */
 
     var octopus = {
         init: function() {
-            octopus.setCurrentStep('intro-1');
             
+            octopus.setCurrentStep();
+
             mainView.init();
             introView.init();
             selectView.init();
             aqView.init();
             scoreView.init();
 
+            
             octopus.stepSelector();
+            octopus.nextBtn();
         },
 
         stepSelector: function(){
             switch(model.currentStep.step){
                 case 'intro-1':
-                    octopus.introStep();
+                    octopus.introStep('intro-2');
                 break;
                 case 'intro-2':
-                    octopus.intro2Setep();
+                    octopus.introStep('selection');
                 break;
                 case 'seleccion':
-                    octopus.selectionStep();
+                    octopus.selectionStep('ask');
                 break;
                 case 'ask':
                     octopus.askStep();
@@ -94,35 +98,37 @@ $(function(){
             }
         },
 
-        introStep: function(){
+        introStep: function(nextStep){
 
             introView.render();
             mainView.render();
+            octopus.setNextStep(nextStep);
         },
 
-        intro2Setep: function(){
-
-        },
-
-        selectionStep: function(){
-
+        selectionStep: function(nextStep){
+            selectView.render();
+            mainView.render();
+            octopus.setNextStep(nextStep);
         },
 
         askStep: function(){
-
+            octopus.setNextStep('qton');
         },
 
         qtonStep: function(){
-
+            octopus.setNextStep('ask');
+            octopus.setNextStep('score');
         },
 
         scoreStep: function(){
-
+            octopus.setNextStep('ask');
+            octopus.setNextStep('total');
         },
 
         total: function(){
 
-        },      
+        },  
+
         getCurrentPanel: function() {
             return model.currentPanel;
         },
@@ -131,13 +137,30 @@ $(function(){
             return model.currentStep;
         },
 
-        setCurrentStep: function(step) {
-            for(var i in model.steps) {
-                if(model.steps[i] == step) {
+        setCurrentStep: function() {
+            for(var i = 0; i < model.steps.length; i++) {
+                if(model.steps[i].step == model.nextStep) {
                     model.currentStep = model.steps[i];
                 }
             }
         },
+
+        setNextStep: function(nextStep) {
+            model.nextStep = nextStep;
+        },
+
+        nextBtn: function(){
+            $('#next-btn').on('click', function(){
+                octopus.cleanContainer();
+                octopus.setCurrentStep();
+                octopus.stepSelector();
+            });
+        },
+
+        cleanContainer: function(){
+            model.currentStep.panel.find('*').empty();
+            mainView.mainContainer.empty();
+        }
 
     };
 
@@ -145,15 +168,15 @@ $(function(){
 
     var mainView = {
         init: function() {
-            this.main_container = $('#main-container');
-            this.main_footer = $('#main-footer');
+            this.mainContainer = $('#main-container');
+            this.mainFooter = $('#main-footer');
             
             mainView.render();
         },
 
         render: function(){
-            var currentPanel = octopus.getCurrentPanel();
-            this.main_container.append(currentPanel);
+            var stepPanel = octopus.getCurrentStep();
+            this.mainContainer.append(stepPanel.panel);
         }
     };
 
@@ -167,7 +190,10 @@ $(function(){
 
         render: function(){
             var stepPanel = octopus.getCurrentStep();
-            this.title 
+            
+            this.title.text(stepPanel.title); 
+            this.sub.text(stepPanel.sub);
+            this.animation.text('animation'); 
         }
     };
 
@@ -181,8 +207,10 @@ $(function(){
         },
 
         render: function(){
-            var currentPanel = octopus.getCurrentPanel();
-            // this.main_container
+            var stepPanel = octopus.getCurrentStep();
+            
+            this.title.text(stepPanel.title); 
+            this.sub.text(stepPanel.sub);
         }
     };
 
