@@ -6,50 +6,47 @@ $(function(){
         currentPanel: null,
         currentStep: null,
         equipos: [ 
-            { points: 0, answ: "", name: "" }, { points: 0, answ: "", name: "" }, { points: 0, answ: "", name: "" },
-            { points: 0, answ: "", name: "" }, { points: 0, answ: "", name: "" } 
+            { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" },
+            { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" } 
         ],
-        preguntas: [
-            {q: '¿Quién descubrio América?', a: 1},
-            {q: '¿Dénde esta el polo Norte?', a: 1},
-            {q: '¿En qué año se dan las petunias?',  a: 1},
-            {q: '¿La Chiripiolca es contagiosa?', a: 1},
-            {q: '¿Por qué solo en México pica el chile?', a: 1},
-            {q: '¿Se puede morir uno de mal olor?', a: 1},
-            {q: '¿Se puede doblar una barra de chocolate con la mente?', a: 1},
-            {q: '¿Los faros tienen baños?', a: 1},
-            {q: '¿Quién le pone el cascabel al gato?', a: 1},
-            {q: '¿Quién le pone el cascabel al gato?', a: 1}
-        ],
+        trivia: {
+            preguntas: [
+                '¿Quién descubrio América?',
+                '¿Dénde esta el polo Norte?',
+                '¿En qué año se dan las petunias?', 
+                '¿La Chiripiolca es contagiosa?', 
+                '¿Por qué solo en México pica el chile?', 
+                '¿Se puede morir uno de mal olor?', 
+                '¿Se puede doblar una barra de chocolate con la mente?',
+                '¿Los faros tienen baños?',
+                '¿Quién le pone el cascabel al gato?',
+                '¿Quién le pone el cascabel al gato?'
+            ],
 
-        respuestas: [
-            ['Nadie', 'Mickey', 'Pluto', 'Cricri'],
-            ['Noreste', 'Mickey', 'Pluto', 'Cricri'],
-            ['1965', 'Mickey', 'Pluto', 'Cricri'],
-            ['En verano', 'Mickey', 'Pluto', 'Cricri'],
-            ['Por que si', 'Mickey', 'Pluto', 'Cricri'],
-            ['Si', 'Mickey', 'Pluto', 'Cricri'],
-            ['Siempre', 'Mickey', 'Pluto', 'Cricri'],
-            ['No', 'Mickey', 'Pluto', 'Cricri'],
-            ['Otro gato', 'Mickey', 'Pluto', 'Cricri'],
-            ['Otro gato', 'Mickey', 'Pluto', 'Cricri']
-        ],
-        titles: [
-            {title: "INTRO", sub: ""}, {title: "JUEGO NUEVO", sub: "SELECCION"},
-            {title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos"}, 
-            {title: "PREGUNTA", sub: ""}, {title: "RESULTADOS", sub: ""},
-            {title: "RESULTADOS FINALES", sub: ""}
-        ],
+            respuestas: [
+                {a1: 'Nadie', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'Noreste', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: '1965', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'En verano', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'Por que si', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'Si', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'Siempre', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'No', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'Otro gato', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+                {a1: 'Otro gato', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 }
+            ]
+        },
+        
         turno: 0,
         numQ: 0,
         steps: [
-            {step:'intro-1', panel: $('#panel-intro'), title: "INTRO", sub: ""}, 
+            {step: 'intro-1', panel: $('#panel-intro'), title: "INTRO", sub: ""}, 
             {step: 'intro-2', panel: $('#panel-intro'), title: "JUEGO NUEVO", sub: "SELECCION"}, 
-            {step:'seleccion', panel: $('#panel-select'), title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos"}, 
-            {step:'ask', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
+            {step: 'seleccion', panel: $('#panel-select'), title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos"}, 
+            {step: 'ask', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
             {step: 'qton', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
-            {step:'score', panel: $('#panel-score'), title: "RESULTADOS", sub: ""}, 
-            {step:'total', panel: $('#panel-score'), title: "RESULTADOS FINALES", sub: ""}
+            {step: 'score', panel: $('#panel-score'), title: "RESULTADOS", sub: ""}, 
+            {step: 'total', panel: $('#panel-score'), title: "RESULTADOS FINALES", sub: ""}
         ]
     };
 
@@ -57,7 +54,7 @@ $(function(){
 
     var octopus = {
         init: function() {
-            setCurrentStep('intro-1');
+            // setCurrentStep('intro-1');
             
             mainView.init();
             introView.init();
@@ -95,6 +92,7 @@ $(function(){
         },
 
         introStep: function(){
+
             introView.render();
             mainView.render();
         },
