@@ -40,18 +40,19 @@ $(function(){
         turno: 0,
         numQ: 0,
         steps: [
-            {step: 'intro-1', panel: $('#panel-intro'), title: "INTRO", sub: ""}, 
-            {step: 'intro-2', panel: $('#panel-intro'), title: "JUEGO NUEVO", sub: "SELECCION"}, 
-            {step: 'seleccion', panel: $('#panel-select'), title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos"}, 
-            {step: 'ask', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
-            {step: 'qton', panel: $('#panel-aq'), title: "PREGUNTA", sub: ""}, 
-            {step: 'score', panel: $('#panel-score'), title: "RESULTADOS", sub: ""}, 
-            {step: 'total', panel: $('#panel-score'), title: "RESULTADOS FINALES", sub: ""}
+            {step: 'intro-1', panel: '#panel-intro', title: "INTRO", sub: ""}, 
+            {step: 'intro-2', panel: '#panel-intro', title: "JUEGO NUEVO", sub: "SELECCION"}, 
+            {step: 'select', panel: '#panel-select', title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos"}, 
+            {step: 'ask', panel: '#panel-aq', title: "PREGUNTA", sub: ""}, 
+            {step: 'qton', panel: '#panel-aq', title: "PREGUNTA", sub: ""}, 
+            {step: 'score', panel: '#panel-score', title: "RESULTADOS", sub: ""}, 
+            {step: 'total', panel: '#panel-score', title: "RESULTADOS FINALES", sub: ""}
         ],
         stepCicle: 0,
         temp: 20000,
         pause: 5000,
-        nextStep: 'intro-1'
+        nextStep: 'intro-1',
+        nombreEqu: '<li><input class="w3-input w3-border" type="text" placeholder="Equipo"></li>'
     };
 
 /* ======= Octopus ======= */
@@ -78,19 +79,19 @@ $(function(){
                     octopus.introStep('intro-2');
                 break;
                 case 'intro-2':
-                    octopus.introStep('selection');
+                    octopus.introStep('select');
                 break;
-                case 'seleccion':
+                case 'select':
                     octopus.selectionStep('ask');
                 break;
                 case 'ask':
-                    octopus.askStep();
+                    octopus.askStep('score');
                 break;
-                case 'qton': 
-                    octopus.qtonStep();
-                break;
+                // case 'qton': 
+                //     octopus.qtonStep();
+                // break;
                 case 'score':
-                    octopus.scoreStep();
+                    octopus.scoreStep('ask');
                 break;
                 case 'total':
                     octopus.total();
@@ -111,21 +112,25 @@ $(function(){
             octopus.setNextStep(nextStep);
         },
 
-        askStep: function(){
-            octopus.setNextStep('qton');
+        askStep: function(nextStep){
+            aqView.render();
+            mainView.render();
+            octopus.setNextStep(nextStep);
         },
 
-        qtonStep: function(){
-            octopus.setNextStep('ask');
-            octopus.setNextStep('score');
+        // qtonStep: function(nextStep){
+        //     octopus.setNextStep('ask');
+        //     octopus.setNextStep('score');
+        // },
+
+        scoreStep: function(nextStep){
+            scoreView.render();
+            mainView.render();
+            octopus.setNextStep(nextStep);
+            // octopus.setNextStep('total');
         },
 
-        scoreStep: function(){
-            octopus.setNextStep('ask');
-            octopus.setNextStep('total');
-        },
-
-        total: function(){
+        total: function(nextStep){
 
         },  
 
@@ -151,16 +156,15 @@ $(function(){
 
         nextBtn: function(){
             $('#next-btn').on('click', function(){
-                octopus.cleanContainer();
+                octopus.hidePanels();
                 octopus.setCurrentStep();
                 octopus.stepSelector();
             });
         },
 
-        cleanContainer: function(){
-            model.currentStep.panel.find('*').empty();
-            mainView.mainContainer.empty();
-        }
+        hidePanels: function(){
+            $(model.currentStep.panel).hide();
+        },
 
     };
 
@@ -176,7 +180,7 @@ $(function(){
 
         render: function(){
             var stepPanel = octopus.getCurrentStep();
-            this.mainContainer.append(stepPanel.panel);
+            $(stepPanel.panel).show();
         }
     };
 
@@ -208,7 +212,6 @@ $(function(){
 
         render: function(){
             var stepPanel = octopus.getCurrentStep();
-            
             this.title.text(stepPanel.title); 
             this.sub.text(stepPanel.sub);
         }
@@ -225,8 +228,9 @@ $(function(){
         },
 
         render: function(){
-            var currentPanel = octopus.getCurrentPanel();
-            // this.main_container
+            var stepPanel = octopus.getCurrentStep();
+            this.title.text(stepPanel.title); 
+            this.sub.text(stepPanel.sub);
         }
     };
 
@@ -239,8 +243,9 @@ $(function(){
         },
 
         render: function(){
-            var currentPanel = octopus.getCurrentPanel();
-            // this.main_container
+            var stepPanel = octopus.getCurrentStep();
+            this.title.text(stepPanel.title); 
+            this.sub.text(stepPanel.sub);
         }
     };
 

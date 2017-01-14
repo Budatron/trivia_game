@@ -10,7 +10,54 @@
 </head>
 <body class="w3-light-grey">
   <div id="main-container">
- 
+  
+    <div id="panel-intro" class="panel">
+      <h1 class="title"></h1>
+      <h3 class="subtitle"></h3>
+      <div id="animation"></div>
+    </div>
+
+    <div id="panel-select" class="panel">
+      <h2 class="title"></h2>
+      <h4 class="subtitle"></h4>
+      <div id="num-preg">
+        Selección<br>Numero de preguntas<br>10, 15 o 20<br>
+        <input type="number" name="" max="10" min="1" value="1">
+      </div>
+      <ul id="crea-equipos" class="w3-ul">
+        <li><input class="w3-input w3-border" type="text" placeholder="Equipo 1"></li>
+        <li><input class="w3-input w3-border" type="text" placeholder="Equipo 2"></li>
+        <li><input class="w3-input w3-border" type="text" placeholder="Equipo 3"></li>
+        <li><input class="w3-input w3-border" type="text" placeholder="Equipo 4"></li>
+        <li><input class="w3-input w3-border" type="text" placeholder="Equipo 5"></li>
+      </ul>
+
+    </div>
+
+    <div id="panel-aq" class="panel">
+      <h2 class="title"></h2>
+      <h4 class="subtitle"></h4>
+      <div id="counter"></div>
+      <div id="timer">Timer</div>
+      <ul id="answers">
+        <li><div class="w3-light-blue">A</div></li>
+        <li><div class="w3-light-blue">B</div></li>
+        <li><div class="w3-light-blue">C</div></li>
+        <li><div class="w3-light-blue">D</div></li>
+      </ul>
+      <ul id="equipos">
+        <li><div class="w3-light-blue nom-equ-cont"><div class="equ-nom">Equipo</div></div><div class="equ-res">A</div></li>
+        <li><div class="w3-light-blue nom-equ-cont"><div class="equ-nom">Equipo</div></div><div class="equ-res">B</div></li>
+        <li><div class="w3-light-blue nom-equ-cont"><div class="equ-nom">Equipo</div></div><div class="equ-res">C</div></li>
+        <li><div class="w3-light-blue nom-equ-cont"><div class="equ-nom">Equipo</div></div><div class="equ-res">D</div></li>
+      </ul>
+    </div>
+
+    <div id="panel-score" class="panel">
+      <h2 class="title"></h2>
+      <h4 class="subtitle"></h4>
+      <ul class="score"></ul>
+    </div>
   </div>
   <div id="main-footer">
     <div id="next-btn" class="w3-btn-bar">
@@ -18,32 +65,6 @@
     </div>
   </div>
 
-  <div id="panel-intro">
-    <h1 class="title"></h1>
-    <h3 class="subtitle"></h3>
-    <div id="animation"></div>
-  </div>
-
-  <div id="panel-select">
-    <h2 class="title"></h2>
-    <h4 class="subtitle"></h4>
-    <ul id="crea-equipos"></ul>
-    <div id="num-preg"></div>
-  </div>
-
-  <div id="panel-aq">
-    <h2 class="title"></h2>
-    <h4 class="subtitle"></h4>
-    <div id="timer"></div>
-    <ul id="answers"></ul>
-    <ul id="equipos"></ul>
-  </div>
-
-  <div id="panel-score">
-    <h2 class="title"></h2>
-    <h4 class="subtitle"></h4>
-    <ul class="score"></ul>
-  </div>
 <!--     <h3>Add a person:</h3>
     <div class="row">
       <div class="five columns">
