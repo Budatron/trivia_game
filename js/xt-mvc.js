@@ -91,7 +91,8 @@ $(function(){
                 //     octopus.qtonStep();
                 // break;
                 case 'score':
-                    octopus.scoreStep('ask');
+                    if(model.turno >= 3)octopus.scoreStep('total');
+                    else octopus.scoreStep('ask');
                 break;
                 case 'total':
                     octopus.total();
@@ -124,6 +125,7 @@ $(function(){
         // },
 
         scoreStep: function(nextStep){
+            model.turno++;
             scoreView.render();
             mainView.render();
             octopus.setNextStep(nextStep);
@@ -131,7 +133,8 @@ $(function(){
         },
 
         total: function(nextStep){
-
+            scoreView.render();
+            mainView.render();
         },  
 
         getCurrentPanel: function() {
@@ -224,6 +227,7 @@ $(function(){
             this.timer = $('#panel-aq #timer');
             this.answers = $('#panel-aq #answers');
             this.equip = $('#panel-aq #equipos');
+            this.cont = $('#counter');
             // aqView.render();
         },
 
@@ -231,6 +235,7 @@ $(function(){
             var stepPanel = octopus.getCurrentStep();
             this.title.text(stepPanel.title); 
             this.sub.text(stepPanel.sub);
+            this.cont.text(model.turno);
         }
     };
 

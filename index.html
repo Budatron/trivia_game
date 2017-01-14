@@ -5,8 +5,9 @@
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/w3.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/skeleton.css">
   <!-- <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script> -->
-  <!-- <script type="text/javascript" src="js/index.js"></script> -->
+  <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body class="w3-light-grey">
   <div id="main-container">
@@ -56,7 +57,20 @@
     <div id="panel-score" class="panel">
       <h2 class="title"></h2>
       <h4 class="subtitle"></h4>
-      <ul class="score"></ul>
+      <ul class="parcial-score">
+        <li><div class="w3-light-blue">Equipo 1 100</div></li>
+        <li><div class="w3-light-blue">Equipo 2 100</div></li>
+        <li><div class="w3-light-blue">Equipo 3 100</div></li>
+        <li><div class="w3-light-blue">Equipo 4 100</div></li>
+        <li><div class="w3-light-blue">Equipo 5 100</div></li>
+      </ul>
+      <ul class="total-score">
+        <li><div class="w3-light-blue">Equipo 1 100</div></li>
+        <li><div class="w3-light-blue">Equipo 2 100</div></li>
+        <li><div class="w3-light-blue">Equipo 3 100</div></li>
+        <li><div class="w3-light-blue">Equipo 4 100</div></li>
+        <li><div class="w3-light-blue">Equipo 5 100</div></li>
+      </ul>
     </div>
   </div>
   <div id="main-footer">
@@ -65,34 +79,73 @@
     </div>
   </div>
 
-<!--     <h3>Add a person:</h3>
-    <div class="row">
-      <div class="five columns">
-        <label for="firstname">Firstname</label>
-        <input class="u-full-width" placeholder="John" id="firstname" type="text">
+<div class="container">
+      <h3>Add a person:</h3>
+      <div class="row">
+        <div class="eight columns">
+          <label for="pregunta">Pregunta</label>
+          <input class="u-full-width" placeholder="John" id="pregunta" type="text">
+        </div>
+        <!-- <div class="two columns">
+          <label for=""># Pregunta</label>
+          <input type="number" max="15" min="1">
+        </div> -->
+        <div class="two columns">
+          <label for="add" class="invisible">x</label>
+          <input class="button-primary" value="Add" id="add" type="button">
+        </div>
       </div>
-      <div class="five columns">
-        <label for="lastname">Lastname</label>
-        <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+      <div class="row">
+        <div class="three columns">
+          <label for="firstname">Respuesta 1</label>
+          <input class="u-full-width" placeholder="John" id="firstname" type="text">
+        </div>
+        <div class="three columns">
+          <label for="lastname">Respuesta 2</label>
+          <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+        </div>
+        <div class="three columns">
+          <label for="lastname">Respuesta 3</label>
+          <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+        </div>
+        <div class="three columns">
+          <label for="lastname">Respuesta 4</label>
+          <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+        </div>
       </div>
-      <div class="two columns">
-        <label for="add" class="invisible">x</label>
-        <input class="button-primary" value="Add" id="add" type="button">
+      <div class="row">
+        <div class="three columns">
+          <label for="firstname">Valor 1</label>
+          <input class="u-full-width" placeholder="John" id="firstname" type="text">
+        </div>
+        <div class="three columns">
+          <label for="lastname">Valor 2</label>
+          <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+        </div>
+        <div class="three columns">
+          <label for="lastname">Valor 3</label>
+          <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+        </div>
+        <div class="three columns">
+          <label for="lastname">Valor 4</label>
+          <input class="u-full-width" placeholder="Doe" id="lastname" type="text">
+        </div>
       </div>
-    </div>
+     
 
-    <h3>All persons:</h3>
-    <table class="u-full-width">
-      <thead>
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="tablebody">
-      </tbody>
-    </table> -->
+      <h3>All persons:</h3>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+        </tbody>
+      </table>
+</div>
   <script>window.$ = window.jQuery = require('./js/jquery-3.1.1.min.js');</script>
   <script type="text/javascript" src="js/xt-mvc.js"></script>
   <script type="text/javascript">
