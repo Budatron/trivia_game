@@ -59,7 +59,8 @@ $(function(){
         nextStep: 'intro-1',
         db: require('./js/database'),
         data: [],
-        interval: null
+        interval: null,
+        roundTeam: []
     };
 
     
@@ -134,6 +135,7 @@ $(function(){
             aqView.render();
             mainView.render();
             octopus.setTimer();
+            octopus.setClicTab();
             octopus.setNextStep(nextStep);
         },
 
@@ -155,6 +157,21 @@ $(function(){
             mainView.render();
         },  
 
+        setClicTab: function() {
+            aqView.ans1.click(function(){
+                aqView.eqres1.text($(this).data('letter'));
+            });
+            aqView.ans2.click(function(){
+                aqView.eqres1.text($(this).data('letter'));
+            });
+            aqView.ans3.click(function(){
+                aqView.eqres1.text($(this).data('letter'));
+            });
+            aqView.ans4.click(function(){
+                aqView.eqres1.text($(this).data('letter'));
+            });
+        },
+
         saveEquipos: function(){
             selectView.eq1.blur(function(){
                 model.equipos[0].name = $(this).val();
@@ -171,9 +188,22 @@ $(function(){
             selectView.eq5.blur(function(){
                 model.equipos[4].name = $(this).val();
             });
-            selectView.addPreg.blur(function(){
+            selectView.addPreg.click(function(){
                 model.maxPreg = $(this).val();
                 model.maxPreg = model.maxPreg -1;
+            });
+            selectView.addEqu.click(function(){
+                model.numEqus = $(this).val();
+                model.roundTeam = [];
+                selectView.eq3.hide();
+                selectView.eq4.hide();
+                selectView.eq5.hide();
+                for(var i = 0; i<model.numEqus; i++){
+                    model.roundTeam.push(i);
+                    selectView['eq'+(i+1)].show();
+                }
+
+                // model.maxPreg = model.maxPreg -1;
             });
         },
 
@@ -291,6 +321,8 @@ $(function(){
             this.eq4 = $('#eq-4');
             this.eq5 = $('#eq-5');
             this.addPreg = $('#add-preg');
+            this.addEqu = $('#add-equ');
+            this.eqSave = $('.eq-save');
             // selectView.render();
         },
 
@@ -310,9 +342,9 @@ $(function(){
             this.equip = $('#panel-aq #equipos');
             this.cont = $('#counter');
             this.ans1 = $('#ans-1');
-            this.ans3 = $('#ans-2');
-            this.ans4 = $('#ans-3');
-            this.ans5 = $('#ans-4');
+            this.ans2 = $('#ans-2');
+            this.ans3 = $('#ans-3');
+            this.ans4 = $('#ans-4');
             this.eqnom1 = $('#equ-nom-1');
             this.eqnom2 = $('#equ-nom-2');
             this.eqnom3 = $('#equ-nom-3');
@@ -335,9 +367,9 @@ $(function(){
             this.sub.text(data.preg);
             this.cont.text(model.turno);
             this.ans1.text(data.r1);
-            this.ans3.text(data.r2);
-            this.ans4.text(data.r3);
-            this.ans5.text(data.r4);
+            this.ans2.text(data.r2);
+            this.ans3.text(data.r3);
+            this.ans4.text(data.r4);
             this.eqnom1.text(equsName[0].name);
             this.eqnom2.text(equsName[1].name);
             this.eqnom3.text(equsName[2].name);

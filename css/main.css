@@ -1,9 +1,9 @@
 html, body {
-  /*font-family: 'Raleway',  Arial, Helvetica, sans-serif;*/
+  font-family: 'Raleway',  Arial, Helvetica, sans-serif;
 }
 
-.main-container { width: 100%; position: relative; }
-.main-footer { width: 100%; position: absolute; height: 150px; bottom: 100px; }
+/*.main-container { width: 100%; position: relative; }*/
+#main-footer { width: 100%; position: absolute; height: 100px; bottom: 0px; }
 .panel { display: none; }
 ul {list-style: none;}
 
@@ -12,5 +12,7 @@ ul {list-style: none;}
 }
 
 .equ-res {position: relative; height: 50px; text-align: center; display: block;}
-.nom-equ-cont {position: relative; height: 100px; width: 30px; display: block;}
+.nom-equ-cont {position: relative; height: 100px; width: 30px; display: none;}
 .nom { transform: rotate(90deg); margin-left: 20px;}
+#eq-3, #eq-4, #eq-5 { display: none; }
+
