@@ -13,4 +13,4 @@ ul {list-style: none;}
 
 .equ-res {position: relative; height: 50px; text-align: center; display: block;}
 .nom-equ-cont {position: relative; height: 100px; width: 30px; display: block;}
-.equ-nom { transform: rotate(90deg); margin-left: 20px;}
+.nom { transform: rotate(90deg); margin-left: 20px;}
