@@ -1,0 +1,17 @@
+html, body {
+  font-family: 'Raleway',  Arial, Helvetica, sans-serif;
+}
+
+.main-container { width: 100%; position: relative; }
+.main-footer { width: 100%; position: absolute; height: 150px; bottom: 100px; }
+.panel { display: none; }
+ul {list-style: none;}
+
+#equipos li{
+  display: inline-block;
+}
+
+.equ-res {position: relative; height: 50px; text-align: center; display: block;}
+.nom-equ-cont {position: relative; height: 100px; width: 30px; display: block;}
+.nom { transform: rotate(90deg); margin-left: 20px;}
+
