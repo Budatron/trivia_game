@@ -53,14 +53,15 @@ $(function(){
         ],
         temp: 20000,
         pause: 5000,
-        time: 0,
-        numEqus: 3,
+        time: 1,
+        numEqus: 2,
         tolFlag: true,
         nextStep: 'intro-1',
         db: require('./js/database'),
         data: [],
         interval: null,
-        roundTeam: []
+        roundTeam: [1, 2],
+        actualTeam: []
     };
 
     
@@ -136,6 +137,7 @@ $(function(){
             mainView.render();
             octopus.setTimer();
             octopus.setClicTab();
+            octopus.hideNext();
             octopus.setNextStep(nextStep);
         },
 
@@ -148,6 +150,7 @@ $(function(){
             model.turno++;
             scoreView.render();
             mainView.render();
+            octopus.hideScore();
             octopus.setNextStep(nextStep);
             // octopus.setNextStep('total');
         },
@@ -157,19 +160,49 @@ $(function(){
             mainView.render();
         },  
 
+        hideScore: function() {
+            $('.sc').hide();
+            $('.scf').hide();
+            for(var i = 1; i<=model.numEqus; i++){
+                $('.s'+i).show();
+                $('.sf'+i).show();
+            }
+        }, 
+
+        hideNext: function(){
+            $('#next-btn').hide();
+        },
+
+        showNext: function(){
+            $('#next-btn').show();
+        },
+
         setClicTab: function() {
             aqView.ans1.click(function(){
-                aqView.eqres1.text($(this).data('letter'));
+                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+                console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             aqView.ans2.click(function(){
-                aqView.eqres1.text($(this).data('letter'));
+                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+                console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             aqView.ans3.click(function(){
-                aqView.eqres1.text($(this).data('letter'));
+                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+                console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             aqView.ans4.click(function(){
-                aqView.eqres1.text($(this).data('letter'));
+                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+                console.log(model.equipos[model.actualTeam[0]], '<---');
             });
+            // console.log(model.equipos[model.actualTeam[0]], '<---');
         },
 
         saveEquipos: function(){
@@ -199,7 +232,7 @@ $(function(){
                 selectView.eq4.hide();
                 selectView.eq5.hide();
                 for(var i = 0; i<model.numEqus; i++){
-                    model.roundTeam.push(i);
+                    model.roundTeam.push(i+1);
                     selectView['eq'+(i+1)].show();
                 }
 
@@ -217,25 +250,43 @@ $(function(){
 
         setTimer: function(){
            var ne = model.numEqus;
-
+           var ca = model.roundTeam.slice(0);
+           model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
+           // console.log(se, 'se')
+           $('.nom-equ-cont').hide();
            model.interval = setInterval(function(){ 
                 aqView.timer.text(model.time++); 
                 if(model.tolFlag){
-                    if(model.time >= 5){
-                        model.time = 0;
+                    if(model.time > 2){
+                        model.time = 1;
+                         $('.equ-cont-'+model.actualTeam[0]).show();
+                         // console.log(model.actualTeam[0], ca)
+                         
+                        // console.log(se, 'se')
                         model.tolFlag = false;
                     }
                 }else {
-                    if(model.time >= 20){
-                        model.time = 0;
+                    if(model.time > 10){
+                        model.time = 1;
                         model.tolFlag = true;
+                        model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
                         ne--;
                     }
                 }
                 
-                if(ne === 0)octopus.stopTimer();
+                if(ne === 0){
+                    octopus.stopTimer();
+                    octopus.endRound();
+                }
             }, 1000);
-           // console.log(int)
+       
+        },
+
+        endRound: function(){
+            octopus.hidePanels();
+            octopus.setCurrentStep();
+            octopus.stepSelector();
+            octopus.showNext();
         },
 
         stopTimer: function(){
@@ -273,6 +324,23 @@ $(function(){
         hidePanels: function(){
             $(model.currentStep.panel).hide();
         },
+
+        sumaPuntos: function(arr) {
+            var suma = 0;
+            for(var i= 0; i < arr.length; i++) {
+                suma = suma + Number(arr[i]); 
+            }
+            return suma;
+        },
+
+        shuffle: function() {
+            var array = [1, 2, 3, 4];
+            for (var tmp, cur, top=array.length; top--;){
+                cur = (Math.random() * (top + 1)) << 0;
+                tmp = array[cur]; array[cur] = array[top]; array[top] = tmp;
+            }
+            return array;
+        }
 
     };
 
@@ -345,6 +413,11 @@ $(function(){
             this.ans2 = $('#ans-2');
             this.ans3 = $('#ans-3');
             this.ans4 = $('#ans-4');
+            this.eqcont1 = $('.equ-cont-nom-1');
+            this.eqcont2 = $('.equ-cont-nom-2');
+            this.eqcont3 = $('.equ-cont-nom-3');
+            this.eqcont4 = $('.equ-cont-nom-4');
+            this.eqcont5 = $('.equ-cont-nom-5');
             this.eqnom1 = $('#equ-nom-1');
             this.eqnom2 = $('#equ-nom-2');
             this.eqnom3 = $('#equ-nom-3');
@@ -362,20 +435,24 @@ $(function(){
             var stepPanel = octopus.getCurrentStep();
             var data = octopus.loadData();
             var equsName = octopus.getEqusNames();
-            // var timer = octopus.getTimer();
+            var sh = octopus.shuffle();
             this.title.text(stepPanel.title); 
             this.sub.text(data.preg);
             this.cont.text(model.turno);
-            this.ans1.text(data.r1);
-            this.ans2.text(data.r2);
-            this.ans3.text(data.r3);
-            this.ans4.text(data.r4);
-            this.eqnom1.text(equsName[0].name);
-            this.eqnom2.text(equsName[1].name);
-            this.eqnom3.text(equsName[2].name);
-            this.eqnom4.text(equsName[3].name);
-            this.eqnom5.text(equsName[4].name);
-            this.timer.text(timer);
+            this.ans1.text('A ' + data['r'+sh[0]]);
+            this.ans2.text('B ' + data['r'+sh[1]]);
+            this.ans3.text('C ' + data['r'+sh[2]]);
+            this.ans4.text('D ' + data['r'+sh[3]]);
+            this.ans1.data('valor', data.v1);
+            this.ans2.data('valor', data.v2);
+            this.ans3.data('valor', data.v3);
+            this.ans4.data('valor', data.v4);
+            this.eqnom1.text('Equipo 1: ' + equsName[0].name);
+            this.eqnom2.text('Equipo 2: ' + equsName[1].name);
+            this.eqnom3.text('Equipo 3: ' + equsName[2].name);
+            this.eqnom4.text('Equipo 4: ' + equsName[3].name);
+            this.eqnom5.text('Equipo 5: ' + equsName[4].name);
+            this.timer.text(0);
         }
     };
 
@@ -384,13 +461,34 @@ $(function(){
             this.title = $('#panel-score .title');
             this.sub = $('#panel-score .subtitle');
             this.score = $('#panel-score #score');
+            this.s1 = $('.s1');
+            this.s2 = $('.s2');
+            this.s3 = $('.s3');
+            this.s4 = $('.s4');
+            this.s5 = $('.s5');
+            this.sf1 = $('.sf1');
+            this.sf2 = $('.sf2');
+            this.sf3 = $('.sf3');
+            this.sf4 = $('.sf4');
+            this.sf5 = $('.sf5');
             // scoreView.render();
         },
 
         render: function(){
             var stepPanel = octopus.getCurrentStep();
+            var equsName = octopus.getEqusNames();
             this.title.text(stepPanel.title); 
             this.sub.text(stepPanel.sub);
+            this.s1.text('Equipo 1 Puntos: ' + equsName[0].points[model.turno -1]);
+            this.s2.text('Equipo 2 Puntos: ' + equsName[1].points[model.turno -1]);
+            this.s3.text('Equipo 3 Puntos: ' + equsName[2].points[model.turno -1]);
+            this.s4.text('Equipo 4 Puntos: ' + equsName[3].points[model.turno- 1]);
+            this.s5.text('Equipo 5 Puntos: ' + equsName[4].points[model.turno -1]);
+            this.sf1.text('Equipo 1 Puntos: ' + octopus.sumaPuntos(equsName[0].points));
+            this.sf2.text('Equipo 2 Puntos: ' + octopus.sumaPuntos(equsName[1].points));
+            this.sf3.text('Equipo 3 Puntos: ' + octopus.sumaPuntos(equsName[2].points));
+            this.sf4.text('Equipo 4 Puntos: ' + octopus.sumaPuntos(equsName[3].points));
+            this.sf5.text('Equipo 5 Puntos: ' + octopus.sumaPuntos(equsName[4].points));
         }
     };
 

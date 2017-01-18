@@ -12,7 +12,7 @@ ul {list-style: none;}
 }
 
 .equ-res {position: relative; height: 50px; text-align: center; display: block;}
-.nom-equ-cont {position: relative; height: 100px; width: 30px; display: none;}
-.nom { transform: rotate(90deg); margin-left: 20px;}
+.nom-equ-cont {position: relative; height: 230px; width: 30px; display: none;}
+.nom { transform: rotate(90deg); width: 200px; position: absolute; bottom: 100px; left: -80px;}
 #eq-3, #eq-4, #eq-5 { display: none; }
 

@@ -10,15 +10,15 @@
   <!-- <script type="text/javascript" src="js/index.js"></script> -->
 </head>
 <body class="w3-light-grey">
-  <div id="main-container" class="w3-container w3-center">
+  <div id="main-container" class="w3-container">
   
-    <div id="panel-intro" class="panel">
+    <div id="panel-intro" class="panel  w3-center">
       <h1 class="title"></h1>
       <h3 class="subtitle"></h3>
       <div id="animation"></div>
     </div>
 
-    <div id="panel-select" class="panel">
+    <div id="panel-select" class="panel  w3-center">
       <h2 class="title"></h2>
       <h4 class="subtitle"></h4>
       <div id="num-preg">
@@ -40,44 +40,46 @@
     <div id="panel-aq" class="panel">
       <h2 class="title"></h2>
       <h4 id="pregunta"></h4>
-      <div id="counter"></div>
-      <div id="timer">Timer</div>
+      <div id="timer"></div>
+      <div id="">Timer</div>
       <ul id="answers">
-        <li>A<div data-letter="A" class="w3-light-blue" id="ans-1">A</div></li>
-        <li>B<div data-letter="B" class="w3-light-blue" id="ans-2">B</div></li>
-        <li>C<div data-letter="C" class="w3-light-blue" id="ans-3">C</div></li>
-        <li>D<div data-letter="D" class="w3-light-blue" id="ans-4">D</div></li>
+        <li><div data-letter="A" class="w3-light-blue w3-border" id="ans-1"></div></li>
+        <li><div data-letter="B" class="w3-light-blue w3-border" id="ans-2"></div></li>
+        <li><div data-letter="C" class="w3-light-blue w3-border" id="ans-3"></div></li>
+        <li><div data-letter="D" class="w3-light-blue w3-border" id="ans-4"></div></li>
       </ul>
       <ul id="equipos">
         <li><div class="w3-light-blue nom-equ-cont equ-cont-1"><div id="equ-nom-1" class="nom">Equipo</div>
-        </div><div id="equ-res-1">A</div></li>
+        </div><div id="equ-res-1"></div></li>
         <li><div class="w3-light-blue nom-equ-cont equ-cont-2"><div id="equ-nom-2" class="nom">Equipo</div>
-        </div><div id="equ-res-2">B</div></li>
+        </div><div id="equ-res-2"></div></li>
         <li><div class="w3-light-blue nom-equ-cont equ-cont-3"><div id="equ-nom-3" class="nom">Equipo</div>
-        </div><div id="equ-res-3">C</div></li>
+        </div><div id="equ-res-3"></div></li>
         <li><div class="w3-light-blue nom-equ-cont equ-cont-4"><div id="equ-nom-4" class="nom">Equipo</div>
-        </div><div id="equ-res-4">D</div></li>
+        </div><div id="equ-res-4"></div></li>
         <li><div class="w3-light-blue nom-equ-cont equ-cont-5"><div id="equ-nom-5" class="nom">Equipo</div>
-        </div><div id="equ-res-5">D</div></li>
+        </div><div id="equ-res-5"></div></li>
       </ul>
     </div>
 
-    <div id="panel-score" class="panel">
+    <div id="panel-score" class="panel w3-align-left">
       <h2 class="title"></h2>
       <h4 class="subtitle"></h4>
+      <h3>Parcial</h3>
       <ul class="parcial-score">
-        <li><div class="w3-light-blue">Equipo 1 100</div></li>
-        <li><div class="w3-light-blue">Equipo 2 100</div></li>
-        <li><div class="w3-light-blue">Equipo 3 100</div></li>
-        <li><div class="w3-light-blue">Equipo 4 100</div></li>
-        <li><div class="w3-light-blue">Equipo 5 100</div></li>
+        <li><div class="w3-light-blue s1 sc"></div></li>
+        <li><div class="w3-light-blue s2 sc"></div></li>
+        <li><div class="w3-light-blue s3 sc"></div></li>
+        <li><div class="w3-light-blue s4 sc"></div></li>
+        <li><div class="w3-light-blue s5 sc"></div></li>
       </ul>
+      <h3>Total</h3>
       <ul class="total-score">
-        <li><div class="w3-light-blue">Equipo 1 100</div></li>
-        <li><div class="w3-light-blue">Equipo 2 100</div></li>
-        <li><div class="w3-light-blue">Equipo 3 100</div></li>
-        <li><div class="w3-light-blue">Equipo 4 100</div></li>
-        <li><div class="w3-light-blue">Equipo 5 100</div></li>
+        <li><div class="w3-light-blue sf1 scf"></div></li>
+        <li><div class="w3-light-blue sf2 scf"></div></li>
+        <li><div class="w3-light-blue sf3 scf"></div></li>
+        <li><div class="w3-light-blue sf4 scf"></div></li>
+        <li><div class="w3-light-blue sf5 scf"></div></li>
       </ul>
     </div>
   </div>
