@@ -1,6 +1,6 @@
 // Initialize the database
 var Datastore = require('nedb');
-db = new Datastore({ filename: '../../../db/trivia.db', autoload: true });
+db = new Datastore({ filename: '../db/trivia.db', autoload: true });
 
 // Adds a person
 exports.addData = function(da, preg, r1, r2, r3, r4, v1, v2, v3, v4) {

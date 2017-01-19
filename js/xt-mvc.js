@@ -12,34 +12,34 @@ $(function(){
             { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" },
             { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" } 
         ],
-        trivia: {
-            preguntas: [
-                '¿Quién descubrio América?',
-                '¿Dénde esta el polo Norte?',
-                '¿En qué año se dan las petunias?', 
-                '¿La Chiripiolca es contagiosa?', 
-                '¿Por qué solo en México pica el chile?', 
-                '¿Se puede morir uno de mal olor?', 
-                '¿Se puede doblar una barra de chocolate con la mente?',
-                '¿Los faros tienen baños?',
-                '¿Quién le pone el cascabel al gato?',
-                '¿Quién le pone el cascabel al gato?'
-            ],
+        // trivia: {
+        //     preguntas: [
+        //         '¿Quién descubrio América?',
+        //         '¿Dénde esta el polo Norte?',
+        //         '¿En qué año se dan las petunias?', 
+        //         '¿La Chiripiolca es contagiosa?', 
+        //         '¿Por qué solo en México pica el chile?', 
+        //         '¿Se puede morir uno de mal olor?', 
+        //         '¿Se puede doblar una barra de chocolate con la mente?',
+        //         '¿Los faros tienen baños?',
+        //         '¿Quién le pone el cascabel al gato?',
+        //         '¿Quién le pone el cascabel al gato?'
+        //     ],
 
-            respuestas: [
-                {a1: 'Nadie', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'Noreste', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: '1965', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'En verano', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'Por que si', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'Si', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'Siempre', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'No', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'Otro gato', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
-                {a1: 'Otro gato', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 }
-            ]
-        },
-        
+        //     respuestas: [
+        //         {a1: 'Nadie', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'Noreste', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: '1965', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'En verano', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'Por que si', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'Si', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'Siempre', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'No', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'Otro gato', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 },
+        //         {a1: 'Otro gato', a2: 'Mickey', a3: 'Pluto', a4: 'Cricri', v1:100, v2:100, v3:100, v4:100 }
+        //     ]
+        // },
+
         turno: 0,
         maxPreg: 0,
         steps: [
@@ -249,7 +249,7 @@ $(function(){
         },
 
         setTimer: function(){
-           var ne = model.maxPreg;
+           var ne = model.numEqus;
            var ca = model.roundTeam.slice(0);
            model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
            // console.log(se, 'se')
@@ -266,7 +266,7 @@ $(function(){
                         model.tolFlag = false;
                     }
                 }else {
-                    if(model.time > 1){
+                    if(model.time > 4){
                         model.time = 1;
                         model.tolFlag = true;
                         model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
