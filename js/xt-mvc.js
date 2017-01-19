@@ -241,7 +241,8 @@ $(function(){
         },
 
         loadData: function(){
-            return model.data[model.turno];
+            var r = model.data.splice(Math.floor(Math.random()*model.data.length),1);
+            return r[0];
         },
 
         getEqusNames: function(){
