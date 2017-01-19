@@ -249,7 +249,7 @@ $(function(){
         },
 
         setTimer: function(){
-           var ne = model.numEqus;
+           var ne = model.maxPreg;
            var ca = model.roundTeam.slice(0);
            model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
            // console.log(se, 'se')
@@ -266,7 +266,7 @@ $(function(){
                         model.tolFlag = false;
                     }
                 }else {
-                    if(model.time > 10){
+                    if(model.time > 1){
                         model.time = 1;
                         model.tolFlag = true;
                         model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
