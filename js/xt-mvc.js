@@ -452,6 +452,11 @@ $(function(){
             this.eqnom3.text('Equipo 3: ' + equsName[2].name);
             this.eqnom4.text('Equipo 4: ' + equsName[3].name);
             this.eqnom5.text('Equipo 5: ' + equsName[4].name);
+            this.eqres1.text('');
+            this.eqres2.text('');
+            this.eqres3.text('');
+            this.eqres4.text('');
+            this.eqres5.text('');
             this.timer.text(0);
         }
     };
