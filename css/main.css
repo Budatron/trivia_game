@@ -2,20 +2,34 @@ html, body {
   width: 1920px; height: 1080px;
 }
 
+.selector { position: relative; width: 80%; margin: auto; }
+.selector ul{ margin: 0 20px 20px; }
+
+.hlist{ border-radius: 25px; height: 80px; 
+	font-family: 'Biko',  Arial, Helvetica, sans-serif; font-weight: 900; font-size: 45px; color: white;
+	background: linear-gradient(135deg, #1794d0 , #0059aa);  
+	box-shadow: 1 2px 4px #fff, 1 -2px 2px #666, inset 1 -2px 2px rgba(0,0,0,0.5), inset 1 2px 2px rgba(255,255,255,0.8);}
+.hlist:after{
+	content: ''; position: absolute; height: 80px; left: 0px; width: 100%; height:40px; 	
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+}
+
 /*.main-container { width: 100%; position: relative; }*/
-#next-btn { position: absolute; left: calc(50% - 198px); bottom: 30%; font-size: 48px;
+.next-btn { position: absolute; left: calc(50% - 198px); bottom: 280px; font-size: 48px;
 	font-family: 'Biko',  Arial, Helvetica, sans-serif; font-weight: 900; 
 	border-style: solid; border-width: 10px; width: 396px; height: 99px; border-radius: 25px;
 	background: linear-gradient(135deg, #1794d0 , #0059aa); 
 	/*box-shadow: 0 1px 2px #fff, 0 -1px 1px #666, inset 0 -1px 1px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);*/
 	}
 
-#next-btn:after{
+.next-btn:after{
 	content: ''; position: absolute; top: 2px; left: 2px; width: 100%; height:50%; 	
     background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2));
 }
 
-.panel { display: none; height: 100%;}
+#panel-select .next-btn { bottom: 100px; left: 1200px; }
+
+.panel { display: none; height: 100%; width: 100%;}
 #panel-intro { background-color: #06559d;  }
 
 .footer { position: absolute; bottom: 0px; height: 160px; width: 100%;
@@ -39,10 +53,15 @@ ul {list-style: none;}
   display: inline-block;
 }
 
-iframe { width: 1048px; height: 780px; overflow: hidden; }
+iframe { width: 1048px; height: 780px; overflow: hidden; margin-top: 50px;}
 
 .equ-res {position: relative; height: 50px; text-align: center; display: block;}
-.nom-equ-cont {position: relative; height: 110px; width: 370px; display: none;}
+.nom-equ-cont {position: relative; height: 110px; width: 370px; display: none;
+	background-color: black; border-style: solid; border-width: 20px; border-color: #1794d0;}
+.nom-equ-cont:after{
+	content: ''; position: absolute; top: 0px; left: 0px; width: 100%; height:50%; 	
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+}
 .nom {width: 200px; position: absolute; font-size: 42px;}
 #eq-3, #eq-4, #eq-5 { display: none; }
 

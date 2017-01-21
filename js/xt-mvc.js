@@ -161,11 +161,11 @@ $(function(){
         }, 
 
         hideNext: function(){
-            $('#next-btn').hide();
+            $('.next-btn').hide();
         },
 
         showNext: function(){
-            $('#next-btn').show();
+            $('.next-btn').show();
         },
 
         setClicTab: function() {
@@ -215,6 +215,8 @@ $(function(){
             selectView.addPreg.click(function(){
                 model.maxPreg = $(this).val();
                 model.maxPreg = model.maxPreg -1;
+                $('.aster').text('');
+                $(this).find('.aster').html(' &#x25C2;');
             });
             selectView.addEqu.click(function(){
                 model.numEqus = $(this).val();
@@ -306,7 +308,7 @@ $(function(){
         },
 
         nextBtn: function(){
-            $('#next-btn').on('click', function(){
+            $('.next-btn').on('click', function(){
                 octopus.hidePanels();
                 octopus.setCurrentStep();
                 octopus.stepSelector();
@@ -357,7 +359,7 @@ $(function(){
             this.title = $('#panel-intro .title');
             this.sub = $('#panel-intro .subtitle');
             this.animation = $('#panel-intro #animation');
-            this.btn = $('#next-btn');
+            this.btn = $('.next-btn');
             // introView.render();
         },
 
@@ -382,17 +384,17 @@ $(function(){
             this.eq3 = $('#eq-3');
             this.eq4 = $('#eq-4');
             this.eq5 = $('#eq-5');
-            this.addPreg = $('#add-preg');
-            this.addEqu = $('#add-equ');
+            this.addPreg = $('.add-preg li');
+            this.addEqu = $('.add-equ li');
             this.eqSave = $('.eq-save');
-            this.btn = $('#next-btn');
+            this.btn = $('.next-btn');
             // selectView.render();
         },
 
         render: function(){
             var stepPanel = octopus.getCurrentStep();
-            this.title.text(stepPanel.title); 
-            this.sub.text(stepPanel.sub);
+            // this.title.text(stepPanel.title); 
+            // this.sub.text(stepPanel.sub);
             this.btn.text(stepPanel.btn); 
         }
     };
