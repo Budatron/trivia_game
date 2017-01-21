@@ -1,18 +1,49 @@
 html, body {
-  font-family: 'Raleway',  Arial, Helvetica, sans-serif;
+  width: 1920px; height: 1080px;
 }
 
 /*.main-container { width: 100%; position: relative; }*/
-#main-footer { width: 100%; position: absolute; height: 100px; bottom: 0px; }
-.panel { display: none; }
+#next-btn { position: absolute; left: calc(50% - 198px); bottom: 30%; font-size: 48px;
+	font-family: 'Biko',  Arial, Helvetica, sans-serif; font-weight: 900; 
+	border-style: solid; border-width: 10px; width: 396px; height: 99px; border-radius: 25px;
+	background: linear-gradient(135deg, #1794d0 , #0059aa); 
+	/*box-shadow: 0 1px 2px #fff, 0 -1px 1px #666, inset 0 -1px 1px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);*/
+	}
+
+#next-btn:after{
+	content: ''; position: absolute; top: 2px; left: 2px; width: 100%; height:50%; 	
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+}
+
+.panel { display: none; height: 100%;}
+#panel-intro { background-color: #06559d;  }
+
+.footer { position: absolute; bottom: 0px; height: 160px; width: 100%;
+	background: linear-gradient(135deg, #0164a5 , #183a67); display: block; }
+.foo1 { position: absolute; display: block; width: 100%; height: 10px; top: 0px; background-color: #b31f75;}
+.foo2 { position: absolute; display: block; width: 100%; height: 10px; top: 10px; background-color: #11ac51;}
+.foo3 { position: absolute; display: block; width: 100%; height: 10px; top: 20px; background-color: #f38023;}
+
+#tablero { position: absolute; top: 10%; right: 15%; height: 759px; width: 1104px; background: url('../assets/tablero.png' ); }
+#pregunta { position: absolute; top: 320px; left: 200px; width: 600;
+	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 30px; color: #fff600}
+#answers { position: absolute; top: 420px; left: 170px; height: 400px; width: 600px; 
+	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 30px; color: #fff600}
+#timer { position: absolute; top: 140px; left: 495px; height: 146px; width: 240px;
+	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 90px; color: #fff600}
+
+
 ul {list-style: none;}
 
 #equipos li{
   display: inline-block;
 }
 
+iframe { width: 1048px; height: 780px; overflow: hidden; }
+
 .equ-res {position: relative; height: 50px; text-align: center; display: block;}
-.nom-equ-cont {position: relative; height: 230px; width: 30px; display: none;}
-.nom { transform: rotate(90deg); width: 200px; position: absolute; bottom: 100px; left: -80px;}
+.nom-equ-cont {position: relative; height: 110px; width: 370px; display: none;}
+.nom {width: 200px; position: absolute; font-size: 42px;}
 #eq-3, #eq-4, #eq-5 { display: none; }
+
 

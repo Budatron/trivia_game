@@ -9,13 +9,13 @@
   <!-- <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script> -->
   <!-- <script type="text/javascript" src="js/index.js"></script> -->
 </head>
-<body class="w3-light-grey">
-  <div id="main-container" class="w3-container">
+<body>
+  <div id="main-container" class="">
   
     <div id="panel-intro" class="panel  w3-center">
       <h1 class="title"></h1>
       <h3 class="subtitle"></h3>
-      <div id="animation"></div>
+      <iframe id="animation" frameBorder="0"></iframe>
     </div>
 
     <div id="panel-select" class="panel  w3-center">
@@ -23,11 +23,31 @@
       <h4 class="subtitle"></h4>
       <div id="num-preg">
         Selección<br>Numero de preguntas<br>10, 15 o 20<br>
-        <input type="number" name="" max="10" min="1" value="1" id="add-preg">
+        <input type="number" class="w3-xxlarge" name="" max="10" min="1" value="1" id="add-preg">
         <br>Numero de equipos<br>
-        <input type="number" name="" max="5" min="2" value="2" id="add-equ">
+        <input type="number" class="w3-xxlarge" name="" max="5" min="2" value="2" id="add-equ">
       </div>
-      <ul id="crea-equipos" class="w3-ul">
+
+      <!-- <div class="w3-dropdown-click w3-xxlarge">
+        <button onclick="myFunction()" class="w3-btn">Click me</button>
+        <div id="Demo" class="w3-dropdown-content w3-card-4 w3-animate-zoom">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+      <script>
+      function myFunction() {
+          var x = document.getElementById("Demo");
+          if (x.className.indexOf("w3-show") == -1) {
+              x.className += " w3-show";
+          } else { 
+              x.className = x.className.replace(" w3-show", "");
+          }
+      }
+      </script> -->
+
+      <ul id="crea-equipos" class="w3-ul w3-xlarge">
         <li><input class="w3-input w3-border" type="text" placeholder="Equipo 1" id="eq-1"></li>
         <li><input class="w3-input w3-border" type="text" placeholder="Equipo 2" id="eq-2"></li>
         <li><input class="w3-input w3-border" type="text" placeholder="Equipo 3" class="eq-save" id="eq-3"></li>
@@ -35,31 +55,48 @@
         <li><input class="w3-input w3-border" type="text" placeholder="Equipo 5" class="eq-save" id="eq-5"></li>
       </ul>
 
+      <div class="footer">&nbsp;
+        <div class="foo1">&nbsp;</div>
+        <div class="foo2">&nbsp;</div>
+        <div class="foo3">&nbsp;</div>
+      </div>
     </div>
 
     <div id="panel-aq" class="panel">
       <h2 class="title"></h2>
-      <h4 id="pregunta"></h4>
-      <div id="timer"></div>
-      <div id="">Timer</div>
-      <ul id="answers">
-        <li><div data-letter="A" class="w3-light-blue w3-border" id="ans-1"></div></li>
-        <li><div data-letter="B" class="w3-light-blue w3-border" id="ans-2"></div></li>
-        <li><div data-letter="C" class="w3-light-blue w3-border" id="ans-3"></div></li>
-        <li><div data-letter="D" class="w3-light-blue w3-border" id="ans-4"></div></li>
-      </ul>
-      <ul id="equipos">
-        <li><div class="w3-light-blue nom-equ-cont equ-cont-1"><div id="equ-nom-1" class="nom">Equipo</div>
-        </div><div id="equ-res-1"></div></li>
-        <li><div class="w3-light-blue nom-equ-cont equ-cont-2"><div id="equ-nom-2" class="nom">Equipo</div>
-        </div><div id="equ-res-2"></div></li>
-        <li><div class="w3-light-blue nom-equ-cont equ-cont-3"><div id="equ-nom-3" class="nom">Equipo</div>
-        </div><div id="equ-res-3"></div></li>
-        <li><div class="w3-light-blue nom-equ-cont equ-cont-4"><div id="equ-nom-4" class="nom">Equipo</div>
-        </div><div id="equ-res-4"></div></li>
-        <li><div class="w3-light-blue nom-equ-cont equ-cont-5"><div id="equ-nom-5" class="nom">Equipo</div>
-        </div><div id="equ-res-5"></div></li>
-      </ul>
+      
+      
+      <div id="tablero">
+          <h4 id="pregunta"></h4>
+          <div id="answers">
+            <ul>
+              <li><div data-letter="A" class="" id="ans-1">A...</div></li>
+              <li><div data-letter="B" class="" id="ans-2">B....</div></li>
+              <li><div data-letter="C" class="" id="ans-3">C....</div></li>
+              <li><div data-letter="D" class="" id="ans-4">D....</div></li>
+            </ul>
+          </div>
+          <div id="timer"></div>
+          <ul id="equipos">
+            <li><div class="w3-light-blue nom-equ-cont equ-cont-1"><div id="equ-nom-1" class="nom">Equipo</div>
+            </div><div id="equ-res-1"></div></li>
+            <li><div class="w3-light-blue nom-equ-cont equ-cont-2"><div id="equ-nom-2" class="nom">Equipo</div>
+            </div><div id="equ-res-2"></div></li>
+            <li><div class="w3-light-blue nom-equ-cont equ-cont-3"><div id="equ-nom-3" class="nom">Equipo</div>
+            </div><div id="equ-res-3"></div></li>
+            <li><div class="w3-light-blue nom-equ-cont equ-cont-4"><div id="equ-nom-4" class="nom">Equipo</div>
+            </div><div id="equ-res-4"></div></li>
+            <li><div class="w3-light-blue nom-equ-cont equ-cont-5"><div id="equ-nom-5" class="nom">Equipo</div>
+            </div><div id="equ-res-5"></div></li>
+          </ul>
+      </div>
+      
+
+      <div class="footer">&nbsp;
+        <div class="foo1">&nbsp;</div>
+        <div class="foo2">&nbsp;</div>
+        <div class="foo3">&nbsp;</div>
+      </div>
     </div>
 
     <div id="panel-score" class="panel w3-align-left">
@@ -82,12 +119,14 @@
         <li><div class="w3-light-blue sf5 scf"></div></li>
       </ul>
     </div>
-  </div>
-  <div id="main-footer">
-    <div id="next-btn" class="w3-btn-bar w3-right w3-xxlarge w3-padding">
-      <button class="w3-btn w3-border">NEXT</button>
+
+    <div id="next-btn" class="w3-btn">
+      <!-- <button class="nxt-btn"></button> -->
     </div>
   </div>
+  
+    
+ 
 
 <!-- <div class="w3-container">
       <div class="w3-row-padding">
