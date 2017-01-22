@@ -15,7 +15,7 @@ html, body {
 }
 
 /*.main-container { width: 100%; position: relative; }*/
-.next-btn { position: absolute; left: calc(50% - 198px); bottom: 280px; font-size: 48px;
+.next-btn { position: absolute; left: calc(50% - 198px); bottom: 150px; font-size: 48px;
 	font-family: 'Biko',  Arial, Helvetica, sans-serif; font-weight: 900; 
 	border-style: solid; border-width: 10px; width: 396px; height: 99px; border-radius: 25px;
 	background: linear-gradient(135deg, #1794d0 , #0059aa); 
@@ -55,7 +55,7 @@ ul {list-style: none;}
   /*display: inline-block;*/
 }
 
-iframe { width: 1048px; height: 780px; overflow: hidden; margin-top: 50px;}
+iframe { width: 1048px; height: 780px; overflow: hidden; margin-top: 150px; transform: scale(1.3, 1.3);}
 
 .nom-equ-cont {position: relative; height: 110px; width: 460px; display: none; padding-top: 10px;
 	background-color: black; border-style: solid; border-width: 16px; border-color: #1794d0;}

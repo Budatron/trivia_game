@@ -2,7 +2,6 @@
 $(function(){
    
     var model = {
-        currentPanel: null,
         currentStep: null,
         equipos: [ 
             { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" }, { points: [], answ: [], name: "" },
@@ -37,7 +36,7 @@ $(function(){
         // },
 
         turno: 0,
-        maxPreg: 0,
+        maxPreg: 4,
         steps: [
             {step: 'intro-1', panel: '#panel-intro', title: "INTRO", sub: "", btn: 'JUGAR' }, 
             // {step: 'intro-2', panel: '#panel-intro', title: "JUEGO NUEVO", sub: "SELECCION", btn: 'CONTINUA' }, 
@@ -47,8 +46,6 @@ $(function(){
             {step: 'score', panel: '#panel-score', title: "RESULTADOS", sub: "", btn: 'SIGUIENTE' }, 
             {step: 'total', panel: '#panel-score', title: "RESULTADOS FINALES", sub: "", btn: 'NUEVO' }
         ],
-        temp: 20000,
-        pause: 5000,
         time: 1,
         numEqus: 2,
         tolFlag: true,
@@ -109,13 +106,13 @@ $(function(){
                     else octopus.scoreStep('ask');
                 break;
                 case 'total':
-                    octopus.total();
+                    octopus.total('intro-1');
+                    octopus.cleanData();
                 break;
             }
         },
 
         introStep: function(nextStep){
-
             introView.render();
             mainView.render();
             octopus.setNextStep(nextStep);
@@ -149,6 +146,7 @@ $(function(){
         total: function(nextStep){
             scoreView.render();
             mainView.render();
+            octopus.setNextStep(nextStep);
         },  
 
         hideScore: function() {
@@ -233,6 +231,24 @@ $(function(){
             });
         },
 
+        cleanData: function() {
+            for (var i = model.equipos.length - 1; i >= 0; i--) {
+                model.equipos[i].points = [];
+                model.equipos[i].answ = [];
+                model.equipos[i].name = '';
+            }
+            model.turno = 0;
+            model.maxPreg = 4;
+            model.time = 1;
+            model.numEqus = 2;
+            model.tolFlag = true;
+            model.data = [];
+            model.interval = null;
+            model.roundTeam = [1, 2];
+            model.actualTeam = [];
+            octopus.getDataFromDB();
+        },
+
         loadData: function(){
             var r = model.data.splice(Math.floor(Math.random()*model.data.length),1);
             return r[0];
@@ -288,10 +304,6 @@ $(function(){
 
         stopTimer: function(){
             clearInterval(model.interval);
-        },
-
-        getCurrentPanel: function() {
-            return model.currentPanel;
         },
 
         getCurrentStep: function() {
