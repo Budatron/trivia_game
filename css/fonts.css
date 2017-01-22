@@ -21,6 +21,7 @@
 @font-face { font-family: 'Raleway', sans-serif; src: url('fonts/Raleway-ThinItalic.ttf') format('truetype'); font-weight: 100; font-style: italic; }
 */
 @font-face { font-family: 'Biko', sans-serif; src: url('fonts/Biko_Black.otf') format('opentype'); font-weight: 900; font-style: normal; }
+@font-face { font-family: 'Neutra', sans-serif; src: url('fonts/NeutraText-Bold.otf') format('opentype'); font-weight: 900; font-style: normal; }
 @font-face {
     font-family: '6809_chargenregular';
     src: url('fonts/6809_chargenregular/6809_chargen-webfont.woff2') format('woff2'),

@@ -39,13 +39,13 @@ $(function(){
         turno: 0,
         maxPreg: 0,
         steps: [
-            {step: 'intro-1', panel: '#panel-intro', title: "INTRO", sub: "", btn: 'COMENZAR' }, 
+            {step: 'intro-1', panel: '#panel-intro', title: "INTRO", sub: "", btn: 'JUGAR' }, 
             // {step: 'intro-2', panel: '#panel-intro', title: "JUEGO NUEVO", sub: "SELECCION", btn: 'CONTINUA' }, 
-            {step: 'select', panel: '#panel-select', title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos", btn: 'SIGUIENTE' }, 
-            {step: 'ask', panel: '#panel-aq', title: "PREGUNTA", sub: "", btn: 'url(assets/comenzar.png)' }, 
+            {step: 'select', panel: '#panel-select', title: "SELECCIÓN JUGADORES", sub: "2 a 5 Equipos", btn: 'OK' }, 
+            {step: 'ask', panel: '#panel-aq', title: "PREGUNTA", sub: "", btn: 'SIGUIENTE' }, 
             // {step: 'qton', panel: '#panel-aq', title: "PREGUNTA", sub: "", btn: }, 
-            {step: 'score', panel: '#panel-score', title: "RESULTADOS", sub: "", btn: 'url(assets/comenzar.png)' }, 
-            {step: 'total', panel: '#panel-score', title: "RESULTADOS FINALES", sub: "", btn: 'url(assets/comenzar.png)' }
+            {step: 'score', panel: '#panel-score', title: "RESULTADOS", sub: "", btn: 'SIGUIENTE' }, 
+            {step: 'total', panel: '#panel-score', title: "RESULTADOS FINALES", sub: "", btn: 'NUEVO' }
         ],
         temp: 20000,
         pause: 5000,
@@ -170,28 +170,29 @@ $(function(){
 
         setClicTab: function() {
             aqView.ans1.click(function(){
+                console.log(model.actualTeam[0])
                 aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
                 model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
                 model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                console.log(model.equipos[model.actualTeam[0]], '<---');
+                // console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             aqView.ans2.click(function(){
                 aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
                 model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
                 model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                console.log(model.equipos[model.actualTeam[0]], '<---');
+                // console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             aqView.ans3.click(function(){
                 aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
                 model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
                 model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                console.log(model.equipos[model.actualTeam[0]], '<---');
+                // console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             aqView.ans4.click(function(){
                 aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
                 model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
                 model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                console.log(model.equipos[model.actualTeam[0]], '<---');
+                // console.log(model.equipos[model.actualTeam[0]], '<---');
             });
             // console.log(model.equipos[model.actualTeam[0]], '<---');
         },
@@ -260,7 +261,7 @@ $(function(){
                         model.tolFlag = false;
                     }
                 }else {
-                    if(model.time > 400){
+                    if(model.time > 5){
                         model.time = 1;
                         model.tolFlag = true;
                         model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
@@ -434,7 +435,7 @@ $(function(){
             var data = octopus.loadData();
             var equsName = octopus.getEqusNames();
             var sh = octopus.shuffle();
-            this.title.text(stepPanel.title); 
+            // this.title.text(stepPanel.title); 
             this.sub.text(data.preg);
             this.cont.text(model.turno);
             this.ans1.text('A ' + data['r'+sh[0]]);
@@ -445,16 +446,16 @@ $(function(){
             this.ans2.data('valor', data.v2);
             this.ans3.data('valor', data.v3);
             this.ans4.data('valor', data.v4);
-            this.eqnom1.text('Equipo 1: ' + equsName[0].name);
-            this.eqnom2.text('Equipo 2: ' + equsName[1].name);
-            this.eqnom3.text('Equipo 3: ' + equsName[2].name);
-            this.eqnom4.text('Equipo 4: ' + equsName[3].name);
-            this.eqnom5.text('Equipo 5: ' + equsName[4].name);
-            this.eqres1.text('');
-            this.eqres2.text('');
-            this.eqres3.text('');
-            this.eqres4.text('');
-            this.eqres5.text('');
+            this.eqnom1.text(equsName[0].name);
+            this.eqnom2.text(equsName[1].name);
+            this.eqnom3.text(equsName[2].name);
+            this.eqnom4.text(equsName[3].name);
+            this.eqnom5.text(equsName[4].name);
+            // this.eqres1.text('');
+            // this.eqres2.text('');
+            // this.eqres3.text('');
+            // this.eqres4.text('');
+            // this.eqres5.text('');
             this.timer.text(0);
         }
     };
@@ -474,6 +475,12 @@ $(function(){
             this.sf3 = $('.sf3');
             this.sf4 = $('.sf4');
             this.sf5 = $('.sf5');
+            this.n1 = $('.n1');
+            this.n2 = $('.n2');
+            this.n3 = $('.n3');
+            this.n4 = $('.n4');
+            this.n5 = $('.n5');
+            this.btn = $('.next-btn');
             // scoreView.render();
         },
 
@@ -482,16 +489,22 @@ $(function(){
             var equsName = octopus.getEqusNames();
             this.title.text(stepPanel.title); 
             this.sub.text(stepPanel.sub);
-            this.s1.text('Equipo 1 Puntos: ' + equsName[0].points[model.turno -1]);
-            this.s2.text('Equipo 2 Puntos: ' + equsName[1].points[model.turno -1]);
-            this.s3.text('Equipo 3 Puntos: ' + equsName[2].points[model.turno -1]);
-            this.s4.text('Equipo 4 Puntos: ' + equsName[3].points[model.turno- 1]);
-            this.s5.text('Equipo 5 Puntos: ' + equsName[4].points[model.turno -1]);
-            this.sf1.text('Equipo 1 Puntos: ' + octopus.sumaPuntos(equsName[0].points));
-            this.sf2.text('Equipo 2 Puntos: ' + octopus.sumaPuntos(equsName[1].points));
-            this.sf3.text('Equipo 3 Puntos: ' + octopus.sumaPuntos(equsName[2].points));
-            this.sf4.text('Equipo 4 Puntos: ' + octopus.sumaPuntos(equsName[3].points));
-            this.sf5.text('Equipo 5 Puntos: ' + octopus.sumaPuntos(equsName[4].points));
+            this.s1.text(equsName[0].points[model.turno -1]);
+            this.s2.text(equsName[1].points[model.turno -1]);
+            this.s3.text(equsName[2].points[model.turno -1]);
+            this.s4.text(equsName[3].points[model.turno -1]);
+            this.s5.text(equsName[4].points[model.turno -1]);
+            this.sf1.text(octopus.sumaPuntos(equsName[0].points));
+            this.sf2.text(octopus.sumaPuntos(equsName[1].points));
+            this.sf3.text(octopus.sumaPuntos(equsName[2].points));
+            this.sf4.text(octopus.sumaPuntos(equsName[3].points));
+            this.sf5.text(octopus.sumaPuntos(equsName[4].points));
+            this.n1.text(equsName[0].name);
+            this.n2.text(equsName[1].name);
+            this.n3.text(equsName[2].name);
+            this.n4.text(equsName[3].name);
+            this.n5.text(equsName[4].name);
+            this.btn.text(stepPanel.btn); 
         }
     };
 

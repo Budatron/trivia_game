@@ -28,8 +28,9 @@ html, body {
 }
 
 #panel-select .next-btn { bottom: 100px; left: 1200px; }
+#panel-score .next-btn { bottom: 100px; left: 1200px; }
 
-.panel { display: none; height: 100%; width: 100%;}
+.panel { display: none; height: 100%; width: 100%; position: relative;}
 #panel-intro { background-color: #06559d;  }
 
 .footer { position: absolute; bottom: 0px; height: 160px; width: 100%;
@@ -39,9 +40,9 @@ html, body {
 .foo3 { position: absolute; display: block; width: 100%; height: 10px; top: 20px; background-color: #f38023;}
 
 #tablero { position: relative; height: 759px; width: 1104px; background: url('../assets/tablero.png' ); }
-#pregunta { position: absolute; top: 320px; left: 200px; width: 600;
+#pregunta { position: absolute; top: 320px; left: 200px; width: 700;
 	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 30px; color: #fff600}
-#answers { position: absolute; top: 420px; left: 170px; height: 400px; width: 600px; 
+#answers { position: absolute; top: 420px; left: 170px; height: 400px; width: 700px; 
 	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 30px; color: #fff600}
 #timer { position: absolute; top: 140px; left: 495px; height: 146px; width: 240px;
 	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 90px; color: #fff600}
@@ -55,15 +56,21 @@ ul {list-style: none;}
 
 iframe { width: 1048px; height: 780px; overflow: hidden; margin-top: 50px;}
 
-.equ-res {position: relative; height: 50px; text-align: center; display: block;}
-.nom-equ-cont {position: relative; height: 110px; width: 370px; display: none;
+.nom-equ-cont {position: relative; height: 110px; width: 460px; display: none; padding-top: 10px;
 	background-color: black; border-style: solid; border-width: 16px; border-color: #1794d0;}
 .nom-equ-cont:after{
 	content: ''; position: absolute; top: 0px; left: 0px; width: 100%; height:50%; 	
     background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.2));
 }
-.nom {width: 200px; position: absolute; font-size: 42px;}
+.nom { font-size: 42px; display: block; padding-left: 20px;
+	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 40px; color: #fff600}
 #eq-3, #eq-4, #eq-5 { display: none; }
-#equipos label{ font-size: 40px; text-align: center; width: 370px;}
+#equipos label{ font-family: 'Neutra',  Arial, Helvetica, sans-serif; font-weight: 900; font-size: 30px; 
+	position: absolute;	top: -30px; left: 120px; text-shadow: -3px 0 5px black, 0 3px 5px black, 3px 0 5px black, 0 -3px 5px black;}
+#equipos { padding-top: 300px; padding-left: 150px;}
+/*.aq-izq { height: 800px; }*/
+.res { color: yellow; font-size: 30px; display: block;
+	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 40px; color: #fff600}
 
-
+.title, .subtitle { font-family: 'Biko',  Arial, Helvetica, sans-serif; font-weight: 900; }
+.parcial-score, .total-score { width: 600px; margin: auto; }

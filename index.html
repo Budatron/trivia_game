@@ -68,32 +68,32 @@
     </div>
 </b>
     <div id="panel-aq" class="panel">
-      <h2 class="title"></h2>
+      <!-- <h2 class="title"></h2> -->
       
       <div class="w3-row-padding">
-        <div class="w3-third w3-red">
+        <div class="w3-third">
           <ul id="equipos" class="w3-text-white w3-text-shadow">
-            <li><label>Equipo 1</label><div class="nom-equ-cont equ-cont-1"><div id="equ-nom-1" class="nom"></div>
-            </div><div id="equ-res-1"></div></li>
-            <li><label>Equipo 2</label><div class="nom-equ-cont equ-cont-2"><div id="equ-nom-2" class="nom"></div>
-            </div><div id="equ-res-2"></div></li>
-            <li><div class="nom-equ-cont equ-cont-3"><div id="equ-nom-3" class="nom"></div>
-            </div><div id="equ-res-3"></div></li>
-            <li><div class="nom-equ-cont equ-cont-4"><div id="equ-nom-4" class="nom"></div>
-            </div><div id="equ-res-4"></div></li>
-            <li><div class="nom-equ-cont equ-cont-5"><div id="equ-nom-5" class="nom"></div>
-            </div><div id="equ-res-5"></div></li>
+            <li><div class="nom-equ-cont equ-cont-1 w3-row"><label>EQUIPO 1</label><div id="equ-nom-1" class="nom w3-col m10"></div>
+            <div id="equ-res-1" class="res w3-col m2"></div></div></li>
+            <li><div class="nom-equ-cont equ-cont-2 w3-row"><label>EQUIPO 2</label><div id="equ-nom-2" class="nom w3-col m10"></div>
+            <div id="equ-res-2" class="res w3-col m2"></div></div></li>
+            <li><div class="nom-equ-cont equ-cont-3 w3-row"><label>EQUIPO 3</label><div id="equ-nom-3" class="nom w3-col m10"></div>
+            <div id="equ-res-3" class="res w3-col m2"></div></div></li>
+            <li><div class="nom-equ-cont equ-cont-4 w3-row"><label>EQUIPO 4</label><div id="equ-nom-4" class="nom w3-col m10"></div>
+            <div id="equ-res-4" class="res w3-col m2"></div></div></li>
+            <li><div class="nom-equ-cont equ-cont-5 w3-row"><label>EQUIPO 5</label><div id="equ-nom-5" class="nom w3-col m10"></div>
+            <div id="equ-res-5" class="res w3-col m2"></div></div></li>
           </ul>
         </div>
-        <div class="w3-twothird w3-blue">
+        <div class="w3-twothird">
           <div id="tablero">
             <h4 id="pregunta"></h4>
             <div id="answers">
               <ul>
-                <li><div data-letter="A" class="" id="ans-1">A...</div></li>
-                <li><div data-letter="B" class="" id="ans-2">B....</div></li>
-                <li><div data-letter="C" class="" id="ans-3">C....</div></li>
-                <li><div data-letter="D" class="" id="ans-4">D....</div></li>
+                <li class="w3-hover-yellow"><div data-letter="A " id="ans-1">A...</div></li>
+                <li class="w3-hover-yellow"><div data-letter="B " id="ans-2">B....</div></li>
+                <li class="w3-hover-yellow"><div data-letter="C " id="ans-3">C....</div></li>
+                <li class="w3-hover-yellow"><div data-letter="D " id="ans-4">D....</div></li>
               </ul>
             </div>
             <div id="timer"></div>
@@ -113,26 +113,73 @@
       <div class="w3-btn next-btn"></div>
     </div>
 
-    <div id="panel-score" class="panel w3-align-left">
-      <h2 class="title"></h2>
-      <h4 class="subtitle"></h4>
-      <h3>Parcial</h3>
-      <ul class="parcial-score">
-        <li><div class="w3-light-blue s1 sc"></div></li>
-        <li><div class="w3-light-blue s2 sc"></div></li>
-        <li><div class="w3-light-blue s3 sc"></div></li>
-        <li><div class="w3-light-blue s4 sc"></div></li>
-        <li><div class="w3-light-blue s5 sc"></div></li>
-      </ul>
-      <h3>Total</h3>
-      <ul class="total-score">
-        <li><div class="w3-light-blue sf1 scf"></div></li>
-        <li><div class="w3-light-blue sf2 scf"></div></li>
-        <li><div class="w3-light-blue sf3 scf"></div></li>
-        <li><div class="w3-light-blue sf4 scf"></div></li>
-        <li><div class="w3-light-blue sf5 scf"></div></li>
-      </ul>
-
+    <div id="panel-score" class="panel w3-xxlarge">
+      <h2 class="title w3-center w3-padding-128"></h2>
+      <div class="w3-row-padding w3-padding-64">
+        <div class="w3-half">
+          <div class="parcial-score">
+            <h1>Parcial</h1>
+            <table class="w3-table w3-xlarge w3-bordered w3-border w3-card-8">
+              <tr>
+                <th>Equipos</th>
+                <th>Puntos</th>
+              </tr>
+              <tr>
+                <td class="n1">&nbsp;</td>
+                <td class="s1">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n2">&nbsp;</td>
+                <td class="s2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n3">&nbsp;</td>
+                <td class="s3">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n4">&nbsp;</td>
+                <td class="s4">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n5">&nbsp;</td>
+                <td class="s5">&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="w3-half">
+          <div class="total-score">
+            <h1>Total</h1>
+            <table class="w3-table w3-xlarge w3-bordered w3-border w3-card-8">
+              <tr>
+                <th>Equipos</th>
+                <th>Puntos</th>
+              </tr>
+              <tr>
+                <td class="n1">&nbsp;</td>
+                <td class="sf1">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n2">&nbsp;</td>
+                <td class="sf2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n3">&nbsp;</td>
+                <td class="sf3"></td>
+              </tr>
+              <tr>
+                <td class="n4">&nbsp;</td>
+                <td class="sf4">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="n5">&nbsp;</td>
+                <td class="sf5">&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      
       <div class="w3-btn next-btn"></div>
     </div>
   </div>
