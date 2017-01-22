@@ -170,7 +170,6 @@ $(function(){
 
         setClicTab: function() {
             aqView.ans1.click(function(){
-                console.log(model.actualTeam[0])
                 aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
                 model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
                 model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
@@ -249,12 +248,15 @@ $(function(){
            model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
            // console.log(se, 'se')
            $('.nom-equ-cont').hide();
-           model.interval = setInterval(function(){ 
-                aqView.timer.text(model.time++); 
+           model.interval = setInterval(function(){
+                var t = model.time++; 
+                aqView.timer.text(t<10?'0'+t:t); 
                 if(model.tolFlag){
-                    if(model.time > 2){
+                    aqView.tablero.show();
+                    if(model.time > 3){
                         model.time = 1;
                          $('.equ-cont-'+model.actualTeam[0]).show();
+                         aqView.tablero.hide();
                          // console.log(model.actualTeam[0], ca)
                          
                         // console.log(se, 'se')
@@ -405,6 +407,7 @@ $(function(){
             this.title = $('#panel-aq .title');
             this.sub = $('#pregunta');
             this.timer = $('#timer');
+            this.tablero = $('.tablero');
             this.answers = $('#panel-aq #answers');
             this.equip = $('#panel-aq #equipos');
             this.cont = $('#counter');
@@ -451,12 +454,12 @@ $(function(){
             this.eqnom3.text(equsName[2].name);
             this.eqnom4.text(equsName[3].name);
             this.eqnom5.text(equsName[4].name);
-            // this.eqres1.text('');
-            // this.eqres2.text('');
-            // this.eqres3.text('');
-            // this.eqres4.text('');
-            // this.eqres5.text('');
-            this.timer.text(0);
+            this.eqres1.text('');
+            this.eqres2.text('');
+            this.eqres3.text('');
+            this.eqres4.text('');
+            this.eqres5.text('');
+            this.timer.text('00');
         }
     };
 
