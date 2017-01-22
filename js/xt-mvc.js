@@ -49,6 +49,7 @@ $(function(){
         time: 1,
         numEqus: 2,
         tolFlag: true,
+        respFlag: false,
         nextStep: 'intro-1',
         db: require('./js/database'),
         data: [],
@@ -167,31 +168,33 @@ $(function(){
         },
 
         setClicTab: function() {
-            aqView.ans1.click(function(){
-                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
-                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
-                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                // console.log(model.equipos[model.actualTeam[0]], '<---');
-            });
-            aqView.ans2.click(function(){
-                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
-                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
-                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                // console.log(model.equipos[model.actualTeam[0]], '<---');
-            });
-            aqView.ans3.click(function(){
-                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
-                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
-                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                // console.log(model.equipos[model.actualTeam[0]], '<---');
-            });
-            aqView.ans4.click(function(){
-                aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
-                model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
-                model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
-                // console.log(model.equipos[model.actualTeam[0]], '<---');
-            });
-            // console.log(model.equipos[model.actualTeam[0]], '<---');
+            for(var i = 1; i <= 4; i++){
+                    aqView['ans'+i].click(function(){
+                    if(model.respFlag){
+                       aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+                        model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+                        model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor'); 
+                        model.time = 8;
+                    }
+                });
+            }
+            
+            
+            // if(model.respFlag)aqView.ans2.click(function(){
+            //     aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+            //     model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+            //     model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+            // });
+            // if(model.respFlag)aqView.ans3.click(function(){
+            //     aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+            //     model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+            //     model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+            // });
+            // if(model.respFlag)aqView.ans4.click(function(){
+            //     aqView['eqres'+model.actualTeam[0]].text($(this).data('letter'));
+            //     model.equipos[model.actualTeam[0]-1].answ[model.turno] = $(this).data('letter');
+            //     model.equipos[model.actualTeam[0]-1].points[model.turno] = $(this).data('valor');
+            // });
         },
 
         saveEquipos: function(){
@@ -246,6 +249,7 @@ $(function(){
             model.interval = null;
             model.roundTeam = [1, 2];
             model.actualTeam = [];
+            model.respFlag = false;
             octopus.getDataFromDB();
         },
 
@@ -265,22 +269,25 @@ $(function(){
            // console.log(se, 'se')
            $('.nom-equ-cont').hide();
            model.interval = setInterval(function(){
+            console.log(model.respFlag);
                 var t = model.time++; 
                 aqView.timer.text(t<10?'0'+t:t); 
                 if(model.tolFlag){
                     aqView.tablero.show();
                     if(model.time > 3){
                         model.time = 1;
-                         $('.equ-cont-'+model.actualTeam[0]).show();
-                         aqView.tablero.hide();
+                        $('.equ-cont-'+model.actualTeam[0]).show();
+                        aqView.tablero.hide();
+                        model.respFlag = true;
                          // console.log(model.actualTeam[0], ca)
                          
                         // console.log(se, 'se')
                         model.tolFlag = false;
                     }
                 }else {
-                    if(model.time > 5){
+                    if(model.time > 8){
                         model.time = 1;
+                        model.respFlag = false;
                         model.tolFlag = true;
                         model.actualTeam = ca.splice(Math.floor(Math.random()*ca.length),1);
                         ne--;
