@@ -61,6 +61,7 @@ function populateTable() {
       tableBody += '  <td>' + datos[i].v2 + '</td>';
       tableBody += '  <td>' + datos[i].v3 + '</td>';
       tableBody += '  <td>' + datos[i].v4 + '</td>';
+      tableBody += '  <td><input type="button" value="Edit" onclick="editData(\'' + i + '\')"></td>';
       tableBody += '  <td><input type="button" value="Delete" onclick="deleteData(\'' + datos[i]._id + '\')"></td>';
       tableBody += '</tr>';
     }
@@ -75,6 +76,24 @@ function deleteData(id) {
 
   // Delete the person from the database
   database.deleteData(id);
+
+  // Repopulate the table
+  populateTable();
+}
+
+// Deletes a person
+function editData(i) {
+
+  database.getData(function(datos) {
+
+    datos.sort(function(a, b){
+        return a.da-b.da;
+    });
+    
+    database.editData(datos[Number(i)], preg.value, r1.value, r2.value, r3.value, r4.value, 
+      v1.value, v2.value, v3.value, v4.value);
+  });
+  
 
   // Repopulate the table
   populateTable();
