@@ -278,11 +278,10 @@ $(function(){
                     if(model.time > model.pausa){
                         model.time = 1;
                         $('.equ-cont-'+model.actualTeam[0]).show();
+                        model.equipos[model.actualTeam[0]-1].points[model.turno] = 0;
+                        model.equipos[model.actualTeam[0]-1].answ[model.turno] = '';
                         aqView.tablero.hide();
                         model.respFlag = true;
-                         // console.log(model.actualTeam[0], ca)
-                         
-                        // console.log(se, 'se')
                         model.tolFlag = false;
                     }
                 }else {
