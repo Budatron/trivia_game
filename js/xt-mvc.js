@@ -158,7 +158,7 @@ $(function(){
                 model.equipos[i].name = '';
             }
             model.turno = 0;
-            model.maxPreg = 10;
+            model.maxPreg = 1;
             model.time = 1;
             model.numEqus = 2;
             model.tolFlag = true;

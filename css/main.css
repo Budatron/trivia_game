@@ -40,7 +40,7 @@ html, body {
 .foo3 { position: absolute; display: block; width: 100%; height: 10px; top: 20px; background-color: #f38023;}
 
 #tablero { position: relative; height: 759px; width: 1104px; background: url('../assets/tablero.png' ); }
-.tablero { position: relative; height: 759px; width: 1104px; background: url('../assets/tableroALPHA2.gif' ); top: 5px; }
+.tablero { position: relative; height: 759px; width: 1104px; background: url('../assets/2prueba2.gif' ); top: 5px; }
 #pregunta { position: absolute; top: 320px; left: 200px; width: 700;
 	font-family: '6809_chargenregular',  Arial, Helvetica, sans-serif; font-weight: 400; font-size: 30px; color: #fff600}
 #answers { position: absolute; top: 420px; left: 170px; height: 400px; width: 700px; 
@@ -89,4 +89,4 @@ ul {list-style: none;}
 
 #panel-score { background: url('../assets/fondo2.png' ); }
 .vendedor { background: url('../assets/vendedor.png' ); width: 300px; height: 726px; position: absolute; bottom: 10px; left: 10px; }
-/*.logo { background: url('../assets/alphaLOGO.gif' ); width: 600px; height: 600px; position: absolute; bottom: 100px; right: -100px; }*/
+.logo { background: url('../assets/logo.gif' ); width: 400px; height: 400px; position: absolute; bottom: 600px; right: 10px; }
