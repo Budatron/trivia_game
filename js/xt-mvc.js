@@ -380,7 +380,7 @@ $(function(){
         init: function() {
             this.title = $('#panel-intro .title');
             this.sub = $('#panel-intro .subtitle');
-            this.animation = $('#panel-intro #animation');
+            // this.animation = $('#panel-intro #animation');
             this.btn = $('.next-btn');
             // introView.render();
         },
@@ -390,7 +390,7 @@ $(function(){
             
             // this.title.text(stepPanel.title); 
             // this.sub.text(stepPanel.sub);
-            this.animation.attr('src', 'assets/100prueba/100prueba.html'); 
+            // this.animation.attr('src', 'assets/100prueba/100prueba.html'); 
             this.btn.text(stepPanel.btn); 
         }
     };
@@ -426,7 +426,7 @@ $(function(){
             this.eq3.hide();
             this.eq4.hide();
             this.eq5.hide();
-            this.btn.css('left', '1200px');
+            this.btn.css('left', '1200px').css('bottom', '100px');
 
         }
     };
