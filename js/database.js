@@ -2,7 +2,10 @@
 
 var path = location.pathname.substring(0,location.pathname.lastIndexOf('/')+1);
 path = path.substring(1); // on PC
-
+// path = path.substring(0,path.lastIndexOf('/'));
+// path = path.substring(0,path.lastIndexOf('/'));
+// path = path.substring(0,path.lastIndexOf('/'));
+// path = path.substring(0,path.lastIndexOf('/')+1);
 
 // console.log( path );
 // Initialize the database
